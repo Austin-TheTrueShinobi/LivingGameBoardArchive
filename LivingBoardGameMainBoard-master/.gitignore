@@ -1,0 +1,5 @@
+build/
+Utilities/__pycache__
+Utilities/ImageProcessingTest.ipynb
+Utilities/.ipynb_checkpoints
+*.jpg

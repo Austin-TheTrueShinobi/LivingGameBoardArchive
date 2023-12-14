@@ -1,0 +1,3 @@
+[submodule "LivingBoardGameSupporting"]
+	path = LivingBoardGameSupporting
+	url = git@github.com:ggailbr/LivingBoardGameSupporting.git

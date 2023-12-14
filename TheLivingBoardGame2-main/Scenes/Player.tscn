@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Player.png" type="Texture" id=1]
+[ext_resource path="res://Assets/light.png" type="Texture" id=3]
+
+[sub_resource type="CSharpScript" id=2]
+resource_name = "Player"
+script/source = "using Godot;
+using System;
+
+public class Player : Area2D
+{
+    // Declare member variables here. Examples:
+    // private int a = 2;
+    // private string b = \"text\";
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        
+    }
+
+//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+//  public override void _Process(float delta)
+//  {
+//      
+//  }
+}
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 7 )
+
+[node name="Player" type="Area2D" groups=["Player", "player"]]
+script = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 377.5, -3.5, 31, 10 )
+
+[node name="PlayerCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 8, 10 )
+cast_to = Vector2( 0, 16 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 8, 8 )
+texture = ExtResource( 3 )
+texture_scale = 2.0
+energy = 1.5
+mode = 2
+
+[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]

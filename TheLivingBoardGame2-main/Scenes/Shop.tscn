@@ -1,0 +1,272 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Assets/colored-transparent_packed.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Shop.gd" type="Script" id=2]
+[ext_resource path="res://Assets/ShopOutline.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Dpad.png" type="Texture" id=4]
+[ext_resource path="res://Assets/ConnectionII.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/glasses.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 0.5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 70
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0.168627, 1, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+outline_size = 2
+outline_color = Color( 0.396078, 0.764706, 0.156863, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+outline_size = 2
+outline_color = Color( 0.396078, 0.764706, 0.156863, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+outline_size = 2
+outline_color = Color( 0.666667, 0.647059, 0.0431373, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+outline_size = 2
+outline_color = Color( 0.847059, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 50
+outline_size = 2
+outline_color = Color( 0.870588, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 50
+outline_size = 2
+outline_color = Color( 0.694118, 0.678431, 0.12549, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 50
+outline_size = 2
+outline_color = Color( 0.309804, 0.803922, 0.180392, 1 )
+font_data = ExtResource( 5 )
+
+[node name="Shop" type="Area2D" groups=["Shop"]]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.443137, 0, 1, 1 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 288, 160, 16, 16 )
+
+[node name="ShopCollider" type="CollisionShape2D" parent="." groups=["passable"]]
+position = Vector2( 8, 13.5 )
+shape = SubResource( 1 )
+
+[node name="ShopUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="ShopUI"]
+margin_left = 80.0
+margin_right = 130.0
+margin_bottom = 48.0
+rect_scale = Vector2( 10, 10 )
+texture = ExtResource( 3 )
+
+[node name="ShopName" type="Label" parent="ShopUI"]
+margin_left = 176.0
+margin_top = 32.0
+margin_right = 646.0
+margin_bottom = 132.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 2 )
+text = "The Shop"
+
+[node name="Leave" type="Label" parent="ShopUI"]
+margin_left = 248.0
+margin_top = 376.0
+margin_right = 440.0
+margin_bottom = 424.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 3 )
+text = "Exit Shop"
+
+[node name="Dpad" type="Sprite" parent="ShopUI"]
+position = Vector2( 328, 296 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="OverworldEquip" type="Node2D" parent="ShopUI"]
+position = Vector2( 300, -20 )
+
+[node name="SpeedUI" type="Sprite" parent="ShopUI/OverworldEquip"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 128, 291 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 624, 0, 16, 16 )
+
+[node name="speed" type="Label" parent="ShopUI/OverworldEquip"]
+margin_left = 152.0
+margin_top = 275.0
+margin_right = 240.0
+margin_bottom = 323.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 5 )
+text = "+ 10"
+
+[node name="ViewUI" type="Sprite" parent="ShopUI/OverworldEquip"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 130, 332 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+region_rect = Rect2( 592, 64, 16, 16 )
+
+[node name="view" type="Label" parent="ShopUI/OverworldEquip"]
+margin_left = 152.0
+margin_top = 315.0
+margin_right = 240.0
+margin_bottom = 363.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 6 )
+text = "+ 10"
+
+[node name="price" type="Label" parent="ShopUI/OverworldEquip"]
+margin_left = 113.0
+margin_top = 228.0
+margin_right = 237.0
+margin_bottom = 276.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 6 )
+text = "$price"
+
+[node name="CombatEquip" type="Node2D" parent="ShopUI"]
+position = Vector2( 0, -20 )
+
+[node name="AttackUI" type="Sprite" parent="ShopUI/CombatEquip"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 128, 291 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 512, 128, 16, 16 )
+
+[node name="attack" type="Label" parent="ShopUI/CombatEquip"]
+margin_left = 152.0
+margin_top = 275.0
+margin_right = 240.0
+margin_bottom = 323.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 4 )
+text = "+ 10"
+
+[node name="DefenseUI" type="Sprite" parent="ShopUI/CombatEquip"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 125, 333 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 592, 64, 16, 16 )
+
+[node name="defense" type="Label" parent="ShopUI/CombatEquip"]
+margin_left = 152.0
+margin_top = 315.0
+margin_right = 240.0
+margin_bottom = 363.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 4 )
+text = "+ 10"
+
+[node name="price" type="Label" parent="ShopUI/CombatEquip"]
+margin_left = 121.0
+margin_top = 227.0
+margin_right = 245.0
+margin_bottom = 275.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 4 )
+text = "$price"
+
+[node name="HealthUp" type="Node2D" parent="ShopUI"]
+position = Vector2( 0, -20 )
+
+[node name="heal" type="Label" parent="ShopUI/HealthUp"]
+margin_left = 252.0
+margin_top = 160.0
+margin_right = 405.0
+margin_bottom = 208.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 7 )
+text = "+ 50 Health"
+
+[node name="HealthUpUI" type="Sprite" parent="ShopUI/HealthUp"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 291, 136 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 624, 160, 16, 16 )
+
+[node name="max_up" type="Label" parent="ShopUI/HealthUp"]
+margin_left = 215.0
+margin_top = 192.0
+margin_right = 443.0
+margin_bottom = 240.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 7 )
+text = "+ 50 Max Health"
+
+[node name="price" type="Label" parent="ShopUI/HealthUp"]
+margin_left = 326.0
+margin_top = 120.0
+margin_right = 450.0
+margin_bottom = 168.0
+rect_pivot_offset = Vector2( 240, 24 )
+custom_fonts/font = SubResource( 7 )
+text = "$price"
+
+[node name="HealthSold" type="Label" parent="ShopUI"]
+visible = false
+margin_left = 271.0
+margin_top = 128.0
+margin_right = 381.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 8 )
+text = "Sold!"
+
+[node name="CombatSold" type="Label" parent="ShopUI"]
+visible = false
+margin_left = 127.0
+margin_top = 271.0
+margin_right = 237.0
+margin_bottom = 321.0
+custom_fonts/font = SubResource( 9 )
+text = "Sold!"
+
+[node name="OverworldSold" type="Label" parent="ShopUI"]
+visible = false
+margin_left = 419.0
+margin_top = 270.0
+margin_right = 529.0
+margin_bottom = 320.0
+custom_fonts/font = SubResource( 10 )
+text = "Sold!"
+
+[connection signal="area_entered" from="." to="." method="_on_Shop_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Shop_area_exited"]
